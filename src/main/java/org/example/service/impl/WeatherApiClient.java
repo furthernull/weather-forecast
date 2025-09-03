@@ -60,7 +60,7 @@ public class WeatherApiClient implements ApiClient {
                             .get(0).get("hour").get(0).path("wind_dir").asText()
             );
         } catch (IOException | InterruptedException e) {
-            throw new WeatherApiException(e.getMessage());
+            throw new WeatherApiException("Fetching error: " + e.getMessage());
         }
     }
 
