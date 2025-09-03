@@ -5,6 +5,8 @@ import org.example.model.WeatherData;
 import org.example.service.Printer;
 
 public class WeatherTablePrinter implements Printer<WeatherData> {
+    private static final String DATE = "Date";
+    private static final String CITY = "City";
     private static final String HEADER_ROW_TEMPLATE =
             "%-15s | %-70s";
     private static final String WEATHER_DATA_TEMPLATE =
@@ -19,7 +21,7 @@ public class WeatherTablePrinter implements Printer<WeatherData> {
                 .distinct()
                 .sorted()
                 .findFirst()
-                .orElse("Date");
+                .orElse(DATE);
 
         printHeader(date);
 
@@ -36,7 +38,7 @@ public class WeatherTablePrinter implements Printer<WeatherData> {
 
     private void printHeader(String date) {
         System.out.println(String.format(HEADER_ROW_TEMPLATE,
-                "City", date));
+                CITY, date));
         System.out.println(SEPARATOR);
     }
 }
